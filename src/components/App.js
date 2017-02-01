@@ -1,18 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import AnimatedButton from './AnimatedButton';
 
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>
-        Welcome to React Native!
-      </Text>
-      <AnimatedButton />
-    </View>
-  );
-};
+class App extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <AnimatedButton />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {

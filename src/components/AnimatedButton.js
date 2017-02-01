@@ -1,15 +1,36 @@
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {View, Text, StyleSheet, Animated} from 'react-native';
 
 class AnimatedButton extends Component {
+  state = {animatedValue: new Animated.Value(0)}
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.variant !== this.props.variant) {
+      Animated.timing(this.state.animatedValue, {toValue: 1}).start();
+    }
+  }
+  
   render() {
+    const background = this.state.animatedValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['rgb(56, 105, 182)', 'rgb(211, 47, 47)'],
+    });
+
     return (
-      <View style={styles.container}>
+      <Animated.View style={[styles.container, {backgroundColor: background}]}>
         <Text style={styles.text}>SUBMIT</Text>
-      </View>
+      </Animated.View>
     );
   }
 }
+
+AnimatedButton.defaultProps = {
+  variant: 'primary',
+};
+
+AnimatedButton.propTypes = {
+  variant: PropTypes.oneOf(['primary', 'error']).isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

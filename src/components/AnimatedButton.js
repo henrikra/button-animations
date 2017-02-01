@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const AnimatedButton = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>SUBMIT</Text>
-    </View>
-  );
-};
+class AnimatedButton extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>SUBMIT</Text>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {

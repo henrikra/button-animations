@@ -1,19 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
+import AnimatedButton from './AnimatedButton';
+
 const App = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.welcome}>
         Welcome to React Native!
       </Text>
-      <Text style={styles.instructions}>
-        To get started, edit index.ios.js
-      </Text>
-      <Text style={styles.instructions}>
-        Press Cmd+R to reload,{'\n'}
-        Cmd+D or shake for dev menu
-      </Text>
+      <AnimatedButton />
     </View>
   );
 };

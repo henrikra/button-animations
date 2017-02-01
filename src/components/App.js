@@ -6,8 +6,8 @@ import AnimatedButton from './AnimatedButton';
 class App extends Component {
   state = {buttonVariant: 'primary'}
   
-  onPress = () => {
-    this.setState({buttonVariant: 'error'});
+  changeVariant = buttonVariant => {
+    this.setState({buttonVariant});
   }
 
   render() {
@@ -16,7 +16,8 @@ class App extends Component {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-        <Button title="Error" onPress={this.onPress} />
+        <Button title="Error" onPress={() => this.changeVariant('error')} />
+        <Button title="Primary" onPress={() => this.changeVariant('primary')} />
         <AnimatedButton variant={this.state.buttonVariant} />
       </View>
     );

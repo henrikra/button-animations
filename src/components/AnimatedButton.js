@@ -1,19 +1,44 @@
 import React, {Component, PropTypes} from 'react';
 import {View, Text, StyleSheet, Animated} from 'react-native';
+import * as colors from '../colors';
 
 class AnimatedButton extends Component {
-  state = {animatedValue: new Animated.Value(0)}
+  state = {
+    animatedValue: new Animated.Value(0),
+    oldColor: colors.primary,
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.variant !== nextProps.variant) {
+      this.setState({oldColor: this.getVariantColor(this.props.variant)});
+    }
+  }
+  
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.variant !== this.props.variant) {
+      this.state.animatedValue.setValue(0);
       Animated.timing(this.state.animatedValue, {toValue: 1}).start();
+    }
+  }
+
+  getVariantColor = () => {
+    switch (this.props.variant) {
+      case 'primary':
+        return colors.primary;
+      case 'success':
+        return colors.success;
+      case 'error':
+        return colors.error;
+      default:
+        return colors.primary;
     }
   }
   
   render() {
     const background = this.state.animatedValue.interpolate({
       inputRange: [0, 1],
-      outputRange: ['rgb(56, 105, 182)', 'rgb(211, 47, 47)'],
+      outputRange: [this.state.oldColor, this.getVariantColor(this.props.variant)],
     });
 
     return (
@@ -29,7 +54,7 @@ AnimatedButton.defaultProps = {
 };
 
 AnimatedButton.propTypes = {
-  variant: PropTypes.oneOf(['primary', 'error']).isRequired,
+  variant: PropTypes.oneOf(['primary', 'error', 'success']).isRequired,
 };
 
 const styles = StyleSheet.create({

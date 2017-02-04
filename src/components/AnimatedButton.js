@@ -63,13 +63,14 @@ AnimatedButton.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 15,
-    paddingHorizontal: 55,
+    padding: 15,
+    width: 200,
     borderRadius: 40,
   },
   text: {
     color: '#ffffff',
     fontSize: 24,
+    textAlign: 'center',
   }
 });
 

@@ -37,19 +37,6 @@ class AnimatedButton extends Component {
     Animated.timing(animatedValue, {toValue: 1, duration: 300}).start();   
   }
 
-  getVariantColor = variant => {
-    switch (variant) {
-      case 'primary':
-        return colors.primary;
-      case 'success':
-        return colors.success;
-      case 'error':
-        return colors.error;
-      default:
-        return colors.primary;
-    }
-  }
-
   onPress = () => {
     Alert.alert(this.props.children);
   }
@@ -57,7 +44,7 @@ class AnimatedButton extends Component {
   render() {
     const buttonBackgroundColor = this.state.colorAnimation.interpolate({
       inputRange: [0, 1],
-      outputRange: [this.getVariantColor(this.state.oldVariant), this.getVariantColor(this.props.variant)],
+      outputRange: [colors[this.state.oldVariant], colors[this.props.variant]],
     });
     const textPosition = this.state.textAnimation.interpolate({
       inputRange: [0, 1],

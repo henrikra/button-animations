@@ -59,7 +59,6 @@ AnimatedButton.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#3869B6',
     paddingVertical: 15,
     paddingHorizontal: 55,
     borderRadius: 40,

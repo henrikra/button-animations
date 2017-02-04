@@ -9,14 +9,14 @@ class AnimatedButton extends Component {
     this.state = {
       colorAnimation: new Animated.Value(0),
       textAnimation: new Animated.Value(0),
-      oldColor: this.getVariantColor(props.variant),
+      oldVariant: props.variant,
       oldText: props.children,
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.variant !== nextProps.variant) {
-      this.setState({oldColor: this.getVariantColor(this.props.variant)});
+      this.setState({oldVariant: this.props.variant});
     }
     if (this.props.children !== nextProps.children) {
       this.setState({oldText: this.props.children});
@@ -51,7 +51,7 @@ class AnimatedButton extends Component {
   render() {
     const buttonBackgroundColor = this.state.colorAnimation.interpolate({
       inputRange: [0, 1],
-      outputRange: [this.state.oldColor, this.getVariantColor(this.props.variant)],
+      outputRange: [this.getVariantColor(this.state.oldVariant), this.getVariantColor(this.props.variant)],
     });
     const textPosition = this.state.textAnimation.interpolate({
       inputRange: [0, 1],

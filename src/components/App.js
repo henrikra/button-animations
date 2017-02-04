@@ -18,6 +18,7 @@ class App extends Component {
         </Text>
         <Button title="Error" onPress={() => this.changeVariant('error')} />
         <Button title="Primary" onPress={() => this.changeVariant('primary')} />
+        <Button title="Success" onPress={() => this.changeVariant('success')} />
         <AnimatedButton variant={this.state.buttonVariant} />
       </View>
     );

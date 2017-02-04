@@ -23,16 +23,18 @@ class AnimatedButton extends Component {
     }
   }
   
-
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.variant !== this.props.variant) {
-      this.state.colorAnimation.setValue(0);
-      Animated.timing(this.state.colorAnimation, {toValue: 1, duration: 300}).start();
+      this.animate(this.state.colorAnimation);
     }
     if (prevProps.children !== this.props.children) {
-      this.state.textAnimation.setValue(0);
-      Animated.timing(this.state.textAnimation, {toValue: 1, duration: 300}).start();
+      this.animate(this.state.textAnimation);
     }
+  }
+
+  animate = animatedValue => {
+    animatedValue.setValue(0);
+    Animated.timing(animatedValue, {toValue: 1, duration: 300}).start();   
   }
 
   getVariantColor = variant => {

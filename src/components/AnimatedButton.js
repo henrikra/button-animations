@@ -36,13 +36,13 @@ class AnimatedButton extends Component {
   }
   
   render() {
-    const background = this.state.animatedValue.interpolate({
+    const buttonBackgroundColor = this.state.animatedValue.interpolate({
       inputRange: [0, 1],
       outputRange: [this.state.oldColor, this.getVariantColor(this.props.variant)],
     });
 
     return (
-      <Animated.View style={[styles.container, {backgroundColor: background}]}>
+      <Animated.View style={[styles.container, {backgroundColor: buttonBackgroundColor}]}>
         <Text style={styles.text}>SUBMIT</Text>
       </Animated.View>
     );

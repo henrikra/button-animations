@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {View, Text, StyleSheet, Animated} from 'react-native';
+import {View, Text, StyleSheet, Animated, TouchableOpacity, Alert} from 'react-native';
 import * as colors from '../colors';
 
 class AnimatedButton extends Component {
@@ -49,6 +49,10 @@ class AnimatedButton extends Component {
         return colors.primary;
     }
   }
+
+  onPress = () => {
+    Alert.alert(this.props.children);
+  }
   
   render() {
     const buttonBackgroundColor = this.state.colorAnimation.interpolate({
@@ -66,12 +70,14 @@ class AnimatedButton extends Component {
 
     return (
       <Animated.View style={[styles.container, {backgroundColor: buttonBackgroundColor}]}>
-        <Animated.Text style={[styles.hiddenText, {top: hiddenTextPosition}]}>
-          {this.props.children.toUpperCase()}
-        </Animated.Text>
-        <Animated.Text style={[styles.text, {transform: [{translateY: textPosition}]}]}>
-          {this.state.oldText.toUpperCase()}
-        </Animated.Text>
+        <TouchableOpacity onPress={this.onPress} style={styles.pressableArea}>
+          <Animated.Text style={[styles.hiddenText, {top: hiddenTextPosition}]}>
+            {this.props.children.toUpperCase()}
+          </Animated.Text>
+          <Animated.Text style={[styles.text, {transform: [{translateY: textPosition}]}]}>
+            {this.state.oldText.toUpperCase()}
+          </Animated.Text>
+        </TouchableOpacity>
       </Animated.View>
     );
   }
@@ -87,10 +93,12 @@ AnimatedButton.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15,
     width: 200,
     borderRadius: 40,
     overflow: 'hidden',
+  },
+  pressableArea: {
+    padding: 15,
   },
   text: {
     color: '#ffffff',

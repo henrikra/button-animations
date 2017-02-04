@@ -47,7 +47,7 @@ class AnimatedButton extends Component {
 
     return (
       <Animated.View style={[styles.container, {backgroundColor: buttonBackgroundColor}]}>
-        <Text style={styles.text}>SUBMIT</Text>
+        <Text style={styles.text}>{this.props.children.toUpperCase()}</Text>
       </Animated.View>
     );
   }

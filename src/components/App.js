@@ -6,7 +6,7 @@ import AnimatedButton from './AnimatedButton';
 class App extends Component {
   state = {
     buttonVariant: 'primary',
-    text: 'Submit',
+    buttonText: 'Submit',
   }
   
   render() {
@@ -14,13 +14,13 @@ class App extends Component {
       <View style={styles.container}>
         <Text style={styles.header}>Change button state</Text>
         <View style={styles.texts}>
-          <Button title="Submit" onPress={() => this.setState({text: 'Submit', buttonVariant: 'primary'})} />
-          <Button title="Whoops" onPress={() => this.setState({text: 'Whoops', buttonVariant: 'error'})} />
-          <Button title="Retry" onPress={() => this.setState({text: 'Retry', buttonVariant: 'error'})} />
-          <Button title="Thanks" onPress={() => this.setState({text: 'Thanks', buttonVariant: 'success'})} />
+          <Button title="Submit" onPress={() => this.setState({buttonText: 'Submit', buttonVariant: 'primary'})} />
+          <Button title="Whoops" onPress={() => this.setState({buttonText: 'Whoops', buttonVariant: 'error'})} />
+          <Button title="Retry" onPress={() => this.setState({buttonText: 'Retry', buttonVariant: 'error'})} />
+          <Button title="Thanks" onPress={() => this.setState({buttonText: 'Thanks', buttonVariant: 'success'})} />
         </View>
         <AnimatedButton variant={this.state.buttonVariant}>
-          {this.state.text}
+          {this.state.buttonText}
         </AnimatedButton>
       </View>
     );

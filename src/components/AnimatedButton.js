@@ -27,7 +27,7 @@ class AnimatedButton extends Component {
   
   animateFromStart = animatedValue => {
     animatedValue.setValue(0);
-    Animated.timing(animatedValue, {toValue: 1, duration: 300}).start();   
+    Animated.timing(animatedValue, {toValue: 1, duration: 250}).start();   
   }
 
   onPress = () => {

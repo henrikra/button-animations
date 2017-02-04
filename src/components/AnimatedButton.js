@@ -42,7 +42,7 @@ class AnimatedButton extends Component {
   }
   
   render() {
-    const buttonBackgroundColor = this.state.colorAnimation.interpolate({
+    const backgroundColor = this.state.colorAnimation.interpolate({
       inputRange: [0, 1],
       outputRange: [colors[this.state.oldVariant], colors[this.props.variant]],
     });
@@ -56,7 +56,7 @@ class AnimatedButton extends Component {
     });
 
     return (
-      <Animated.View style={[styles.container, {backgroundColor: buttonBackgroundColor}]}>
+      <Animated.View style={[styles.container, {backgroundColor}]}>
         <TouchableOpacity onPress={this.onPress} style={styles.pressableArea}>
           <Animated.Text style={[styles.hiddenText, {top: hiddenTextPosition}]}>
             {this.props.children.toUpperCase()}

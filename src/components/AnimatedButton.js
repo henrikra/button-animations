@@ -35,8 +35,8 @@ class AnimatedButton extends Component {
     }
   }
 
-  getVariantColor = () => {
-    switch (this.props.variant) {
+  getVariantColor = variant => {
+    switch (variant) {
       case 'primary':
         return colors.primary;
       case 'success':

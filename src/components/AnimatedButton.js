@@ -89,6 +89,7 @@ AnimatedButton.defaultProps = {
 
 AnimatedButton.propTypes = {
   variant: PropTypes.oneOf(['primary', 'error', 'success']).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 const styles = StyleSheet.create({

@@ -51,7 +51,7 @@ class AnimatedButton extends Component {
     return (
       <Animated.View style={[styles.container, {backgroundColor}]}>
         <TouchableOpacity onPress={this.onPress} style={styles.pressableArea}>
-          <Animated.Text style={[styles.hiddenText, {top: hiddenTextPosition}]}>
+          <Animated.Text style={[styles.text, styles.hiddenText, {top: hiddenTextPosition}]}>
             {this.props.children.toUpperCase()}
           </Animated.Text>
           <Animated.Text style={[styles.text, {transform: [{translateY: textPosition}]}]}>
@@ -87,13 +87,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   hiddenText: {
-    color: '#ffffff',
-    fontSize: 24,
     position: 'absolute',
     top: -35,
     left: 0,
     right: 0,
-    textAlign: 'center',
   }
 });
 

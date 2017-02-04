@@ -25,14 +25,14 @@ class AnimatedButton extends Component {
   
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.variant !== this.props.variant) {
-      this.animate(this.state.colorAnimation);
+      this.animateFromStart(this.state.colorAnimation);
     }
     if (prevProps.children !== this.props.children) {
-      this.animate(this.state.textAnimation);
+      this.animateFromStart(this.state.textAnimation);
     }
   }
 
-  animate = animatedValue => {
+  animateFromStart = animatedValue => {
     animatedValue.setValue(0);
     Animated.timing(animatedValue, {toValue: 1, duration: 300}).start();   
   }

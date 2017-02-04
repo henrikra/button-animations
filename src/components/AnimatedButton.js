@@ -3,9 +3,13 @@ import {View, Text, StyleSheet, Animated} from 'react-native';
 import * as colors from '../colors';
 
 class AnimatedButton extends Component {
-  state = {
-    animatedValue: new Animated.Value(0),
-    oldColor: colors.primary,
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      animatedValue: new Animated.Value(0),
+      oldColor: this.getVariantColor(props.variant),
+    }
   }
 
   componentWillReceiveProps(nextProps) {
